@@ -1,0 +1,13 @@
+diff --git a/amptheme.info.yml b/amptheme.info.yml
+index 6924cd4..b457b42 100644
+--- a/amptheme.info.yml
++++ b/amptheme.info.yml
+@@ -14,4 +14,5 @@ regions:
+ version: '8.x-1.1'
+ core: '8.x'
+ project: 'amptheme'
+-datestamp: 1523124484
+\ No newline at end of file
++datestamp: 1523124484
++base theme: stable
+\ No newline at end of file
