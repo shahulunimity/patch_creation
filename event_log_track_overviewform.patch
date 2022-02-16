@@ -1,0 +1,21 @@
+diff --git a/OverviewForm.php b/OverviewForm.php
+index 1883ce6..def22e6 100644
+--- a/OverviewForm.php
++++ b/OverviewForm.php
+@@ -9,6 +9,7 @@ use Drupal\Core\Url;
+ use Drupal\Core\Ajax\AjaxResponse;
+ use Drupal\Core\Ajax\HtmlCommand;
+ use \Drupal\user\Entity\User;
++use Drupal\Core\Link;
+ 
+ /**
+  * Configure user settings for this site.
+@@ -134,7 +135,7 @@ class OverviewForm extends FormBase {
+     foreach ($result as $record) {
+       if (!empty($record->uid)) {
+         $account = User::load($record->uid);
+-        $userLink = $this->l($account->getUsername(), Url::fromUri('internal:/user/' . $account->id()));
++        $userLink = Link::fromTextAndUrl($account->get('name')->value, Url::fromUri('internal:/user/' . $account->id()));
+       }
+       else {
+         $account = NULL;
