@@ -1,0 +1,26 @@
+diff --git a/CecAdminInvalidateUrl.php b/CecAdminInvalidateUrl.php
+index aefb146..f880b37 100644
+--- a/CecAdminInvalidateUrl.php
++++ b/CecAdminInvalidateUrl.php
+@@ -81,7 +81,7 @@ class CecAdminInvalidateUrl extends ConfigFormBase {
+ 
+     // Check if the credentials are configured.
+     if (!$config->get('cec_region' && !$config->get('cec_key') && !$config->get('cec_secret'))) {
+-      drupal_set_message($this->t('You must configure the Global Settings correctly before execute an invalidation.'), 'error');
++       \Drupal::messenger()->addError(t('You must configure the Global Settings correctly before execute an invalidation.'));
+     }
+ 
+     else {
+@@ -97,10 +97,10 @@ class CecAdminInvalidateUrl extends ConfigFormBase {
+       list($status, $message) = cloudfront_edge_caching_invalidate_url($paths);
+ 
+       if ($status == TRUE) {
+-        drupal_set_message($this->t('You invalidation is in progress.'), 'status');
++        Drupal::messenger()->addStatus(t('You invalidation is in progress.'));
+       }
+       else {
+-        drupal_set_message($this->t($message), 'error');
++        $this->messenger()->addError($message);
+       }
+     }
+   }
